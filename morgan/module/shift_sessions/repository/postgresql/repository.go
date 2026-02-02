@@ -1,0 +1,35 @@
+package postgresql
+
+import (
+	"time"
+
+	"github.com/jackc/pgx/v5/pgxpool"
+	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions/domain"
+)
+
+var _ domain.ShiftSessionRepository = (*Repository)(nil)
+
+// ShiftSessionEntity maps to schedule.shift_sessions table.
+type ShiftSessionEntity struct {
+	Id        string     `db:"id" map:"Id"`
+	Name      string     `db:"name" map:"Name"`
+	Start     string     `db:"start" map:"Start"`
+	End       string     `db:"end" map:"End"`
+	Status    bool       `db:"status" map:"Status"`
+	CreatedAt time.Time  `db:"created_at" map:"CreatedAt"`
+	UpdatedAt time.Time  `db:"updated_at" map:"UpdatedAt"`
+	DeletedAt *time.Time `db:"deleted_at" map:"DeletedAt"`
+	CreatedBy *string    `db:"created_by" map:"CreatedBy"`
+	UpdatedBy *string    `db:"updated_by" map:"UpdatedBy"`
+	DeletedBy *string    `db:"deleted_by" map:"DeletedBy"`
+}
+
+// Repository implements domain.ShiftSessionRepository.
+type Repository struct {
+	db *pgxpool.Pool
+}
+
+// NewRepository creates a new ShiftSession Repository.
+func NewRepository(db *pgxpool.Pool) *Repository {
+	return &Repository{db: db}
+}
