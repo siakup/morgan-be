@@ -10,9 +10,19 @@ import (
 
 var queryFindById = `
 	SELECT
-		id, name, start, end, status
+		id,
+    name,
+    start,
+    "end",
+    status,
+    created_at,
+    updated_at,
+    deleted_at,
+    created_by,
+    updated_by,
+    deleted_by
 	FROM schedule.shift_sessions
-	WHERE id = @id
+	WHERE id = @id AND deleted_at IS NULL
 	LIMIT 1
 `
 
