@@ -6,13 +6,20 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-var queryDelete = `DELETE FROM schedule.shift_sessions WHERE id = @id`
+var queryDelete = `UPDATE schedule.shift_sessions
+SET
+    deleted_at = NOW(),
+    deleted_by = @deleted_by
+WHERE id = @id
+AND deleted_at IS NULL
+`
 
-// Delete removes a shift session from the database.
-func (r *Repository) Delete(ctx context.Context, id string) error {
+// Delete soft removes a shift session from the database.
+func (r *Repository) Delete(ctx context.Context, id string, deletedBy string) error {
 
 	_, err := r.db.Exec(ctx, queryDelete, pgx.NamedArgs{
-		"id": id,
+		"id":         id,
+		"deleted_by": deletedBy,
 	})
 
 	return err

@@ -35,5 +35,5 @@ type ShiftSessionRepository interface {
 	FindByID(ctx context.Context, id string) (*ShiftSession, error)
 	Store(ctx context.Context, shiftSession *ShiftSession) error
 	Update(ctx context.Context, shiftSession *ShiftSession) error
-	Delete(ctx context.Context, id string) error
+	Delete(ctx context.Context, id string, deletedBy string) error
 }

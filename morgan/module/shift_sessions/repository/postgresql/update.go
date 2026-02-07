@@ -12,7 +12,7 @@ var queryUpdate = `
 	SET
 		name = @name,
 		start = @start,
-		end = @end,
+		"end" = @end,
 		status = @status,
 		updated_by = @updated_by,
 		updated_at = now()
