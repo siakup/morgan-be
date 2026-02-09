@@ -14,5 +14,5 @@ CREATE TABLE IF NOT EXISTS organization.domains (
     deleted_by UUID NULL
 );
 
-CREATE INDEX idx_shift_sessions_status 
+CREATE INDEX idx_domains_status 
 ON organization.domains(status);

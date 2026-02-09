@@ -38,10 +38,10 @@ func (r *Repository) FindByID(ctx context.Context, id string) (*domain.Domain, e
 		return nil, err
 	}
 
-	shiftSession, err := object.Parse[*DomainEntity, *domain.Domain](object.TagDB, object.TagObject, record)
+	domain, err := object.Parse[*DomainEntity, *domain.Domain](object.TagDB, object.TagObject, record)
 	if err != nil {
 		return nil, err
 	}
 
-	return shiftSession, nil
+	return domain, nil
 }
