@@ -9,9 +9,9 @@ import (
 
 var queryStore = `
 	INSERT INTO schedule.shift_sessions (
-		name, start, end, status, created_by, updated_by
+		name, start, "end", created_by, updated_by
 	) VALUES (
-		@name, @start, @end, @status, @created_by, @updated_by
+		@name, @start, @end, @created_by, @updated_by
 	)
 	RETURNING id
 `
@@ -22,7 +22,6 @@ func (r *Repository) Store(ctx context.Context, shiftSession *domain.ShiftSessio
 		"name":       shiftSession.Name,
 		"start":      shiftSession.Start,
 		"end":        shiftSession.End,
-		"status":     shiftSession.Status,
 		"created_by": shiftSession.CreatedBy,
 		"updated_by": shiftSession.UpdatedBy,
 	})

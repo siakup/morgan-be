@@ -92,6 +92,28 @@ components:
           type: string
           enum: [active, inactive]
 
+    RoomType:
+      type: object
+      description: Room Type Master
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        is_active:
+          type: boolean
+        created_by:
+          type: string
+          format: uuid
+          nullable: true
+        updated_by:
+          type: string
+          format: uuid
+          nullable: true
+
     # Requests
     CreateRoleRequest:
       type: object
@@ -146,6 +168,31 @@ components:
           type: array
           items:
             type: string
+
+    CreateRoomTypeRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        is_active:
+          type: boolean
+          default: true
+
+    UpdateRoomTypeRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        is_active:
+          type: boolean
 
 security:
   - bearerAuth: []
@@ -459,3 +506,144 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response'
+
+  # Room Type Master
+  /room-types:
+    get:
+      summary: List Room Types
+      tags:
+        - Room Types
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+        - in: query
+          name: size
+          schema:
+            type: integer
+            default: 10
+        - in: query
+          name: search
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of room types with pagination
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response'
+                  - properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/RoomType'
+                      meta:
+                        $ref: '#/components/schemas/Meta'
+    post:
+      summary: Create Room Type
+      tags:
+        - Room Types
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRoomTypeRequest'
+      responses:
+        '201':
+          description: Room type created
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response'
+                  - properties:
+                      data:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+        '400':
+          description: Bad Request (e.g. name already exists)
+
+  /room-types/{id}:
+    get:
+      summary: Get Room Type by ID
+      tags:
+        - Room Types
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Room type details
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response'
+                  - properties:
+                      data:
+                        $ref: '#/components/schemas/RoomType'
+        '404':
+          description: Room type not found
+    put:
+      summary: Update Room Type
+      tags:
+        - Room Types
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRoomTypeRequest'
+      responses:
+        '200':
+          description: Room type updated
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Response'
+                  - properties:
+                      data:
+                        $ref: '#/components/schemas/RoomType'
+        '400':
+          description: Bad Request (e.g. name already exists)
+        '404':
+          description: Room type not found
+    delete:
+      summary: Delete Room Type (soft delete)
+      tags:
+        - Room Types
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Room type deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '404':
+          description: Room type not found

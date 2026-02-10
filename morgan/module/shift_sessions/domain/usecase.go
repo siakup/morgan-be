@@ -10,5 +10,5 @@ type UseCase interface {
 	Get(ctx context.Context, id string) (*ShiftSession, error)
 	Create(ctx context.Context, role *ShiftSession) error
 	Update(ctx context.Context, role *ShiftSession) error
-	Delete(ctx context.Context, id string) error
+	Delete(ctx context.Context, id string, deletedBy string) error
 }
