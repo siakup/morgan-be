@@ -15,6 +15,7 @@ import (
 	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains"
 	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect"
 	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles"
+	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions"
 	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users"
 )
 
@@ -147,7 +148,7 @@ func serveE(cmd *cobra.Command, args []string) error {
 		roles.Module,
 		users.Module,
 		redirect.Module,
-		domains.Module,
+		shift_sessions.Module,
 		fx.Provide(
 			fx.Annotate(
 				idp.NewIDP,
