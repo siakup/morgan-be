@@ -12,6 +12,7 @@ import (
 	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp"
 	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/middleware"
 	internalConfig "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/config"
+	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains"
 	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect"
 	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles"
 	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions"
