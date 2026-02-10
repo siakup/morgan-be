@@ -11,7 +11,8 @@ import (
 // FindAll retrieves a list of shift sessions based on the provided filter.
 func (r *Repository) FindAll(ctx context.Context, filter domain.ShiftSessionFilter) ([]*domain.ShiftSession, int64, error) {
 	baseQuery := `
-		FROM schedule.shift_sessions
+    FROM schedule.shift_sessions
+    WHERE deleted_at IS NULL
 	`
 	args := pgx.NamedArgs{}
 
@@ -31,7 +32,17 @@ func (r *Repository) FindAll(ctx context.Context, filter domain.ShiftSessionFilt
 	// 2. Select Data
 	selectQuery := `
 		SELECT
-			id, name, start, end, status
+    id,
+    name,
+    start,
+    "end",
+    status,
+    created_at,
+    updated_at,
+    deleted_at,
+    created_by,
+    updated_by,
+    deleted_by
 	` + baseQuery + " ORDER BY created_at DESC LIMIT @limit OFFSET @offset"
 
 	args["limit"] = filter.Pagination.GetLimit()
