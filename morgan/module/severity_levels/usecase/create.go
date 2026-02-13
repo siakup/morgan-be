@@ -13,5 +13,5 @@ func (u *UseCase) Create(ctx context.Context, sl *domain.SeverityLevel) error {
 	now := time.Now()
 	sl.CreatedAt = now
 	sl.UpdatedAt = now
-	return u.repo.Store(ctx, sl)
+	return u.repository.Store(ctx, sl)
 }

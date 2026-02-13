@@ -19,7 +19,7 @@ func (h *SeverityLevelHandler) GetSeverityLevels(c *fiber.Ctx) error {
 		Search: c.Query("search"),
 	}
 
-	severityLevels, total, err := h.useCase.FindAll(c.Context(), filter)
+	severityLevels, total, err := h.useCase.FindAll(c.UserContext(), filter)
 	if err != nil {
 		return h.handleError(c, err)
 	}

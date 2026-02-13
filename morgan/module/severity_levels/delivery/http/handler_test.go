@@ -9,12 +9,12 @@ import (
 	"testing"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
 	"github.com/siakup/morgan-be/libraries/middleware"
 	deliverhttp "github.com/siakup/morgan-be/morgan/module/severity_levels/delivery/http"
 	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
 	"github.com/siakup/morgan-be/morgan/tests/mocks"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
 )
 
 func setupSeverityLevelApp(useCase domain.UseCase) *fiber.App {
@@ -75,7 +75,7 @@ func TestSeverityLevelHandler_GetSeverityLevelByID(t *testing.T) {
 		app := setupSeverityLevelApp(mockUseCase)
 
 		sl := &domain.SeverityLevel{Id: "sl1", Name: "Low"}
-		mockUseCase.On("FindByID", mock.Anything, "sl1").Return(sl, nil).Once()
+		mockUseCase.On("Get", mock.Anything, "sl1").Return(sl, nil).Once()
 
 		req := httptest.NewRequest(http.MethodGet, "/severity-levels/sl1", nil)
 		resp, err := app.Test(req)
@@ -89,7 +89,7 @@ func TestSeverityLevelHandler_GetSeverityLevelByID(t *testing.T) {
 		mockUseCase := new(mocks.SeverityLevelsUseCaseMock)
 		app := setupSeverityLevelApp(mockUseCase)
 
-		mockUseCase.On("FindByID", mock.Anything, "sl1").Return((*domain.SeverityLevel)(nil), errors.New("fail")).Once()
+		mockUseCase.On("Get", mock.Anything, "sl1").Return((*domain.SeverityLevel)(nil), errors.New("fail")).Once()
 
 		req := httptest.NewRequest(http.MethodGet, "/severity-levels/sl1", nil)
 		resp, err := app.Test(req)

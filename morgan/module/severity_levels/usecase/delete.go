@@ -5,5 +5,5 @@ import (
 )
 
 func (u *UseCase) Delete(ctx context.Context, id string, deletedBy string) error {
-	return u.repo.Delete(ctx, id, deletedBy)
+	return u.repository.Delete(ctx, id, deletedBy)
 }

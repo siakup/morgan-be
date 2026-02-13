@@ -2,16 +2,22 @@ package usecase
 
 import (
 	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/trace"
 )
 
 var _ domain.UseCase = (*UseCase)(nil)
 
 // UseCase implements the domain.UseCase interface.
 type UseCase struct {
-	repo domain.SeverityLevelRepository
+	repository domain.SeverityLevelRepository
+	tracer     trace.Tracer
 }
 
-// NewUseCase creates a new instance of the UseCase.
-func NewUseCase(repo domain.SeverityLevelRepository) *UseCase {
-	return &UseCase{repo: repo}
+// NewUseCase creates a new UseCase.
+func NewUseCase(repository domain.SeverityLevelRepository) domain.UseCase {
+	return &UseCase{
+		repository: repository,
+		tracer:     otel.Tracer("morgan/module/severity_levels/usecase"),
+	}
 }

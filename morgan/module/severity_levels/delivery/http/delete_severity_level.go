@@ -10,7 +10,7 @@ func (h *SeverityLevelHandler) DeleteSeverityLevel(c *fiber.Ctx) error {
 	id := c.Params("id")
 	userId, _ := c.Locals(middleware.XUserIdKey).(string)
 
-	err := h.useCase.Delete(c.Context(), id, userId)
+	err := h.useCase.Delete(c.UserContext(), id, userId)
 	if err != nil {
 		return h.handleError(c, err)
 	}
