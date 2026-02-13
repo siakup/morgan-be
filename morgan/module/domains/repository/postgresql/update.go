@@ -8,7 +8,7 @@ import (
 )
 
 var queryUpdate = `
-	UPDATE organization.domains
+    	UPDATE master.domains
 	SET
 		name = @name,
 		status = @status,

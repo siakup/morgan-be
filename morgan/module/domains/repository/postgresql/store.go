@@ -8,12 +8,12 @@ import (
 )
 
 var queryStore = `
-	INSERT INTO organization.domains (
-		name, created_by, updated_by
-	) VALUES (
-		@name, @created_by, @updated_by
-	)
-	RETURNING id
+    	INSERT INTO master.domains (
+    		name, created_by, updated_by
+    	) VALUES (
+    		@name, @created_by, @updated_by
+    	)
+    	RETURNING id
 `
 
 // Store persists a new domain to the database.

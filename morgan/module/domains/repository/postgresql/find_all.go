@@ -11,8 +11,8 @@ import (
 // FindAll retrieves a list of domains based on the provided filter.
 func (r *Repository) FindAll(ctx context.Context, filter domain.DomainFilter) ([]*domain.Domain, int64, error) {
 	baseQuery := `
-    FROM organization.domains
-    WHERE deleted_at IS NULL
+	FROM master.domains
+	WHERE deleted_at IS NULL
 	`
 	args := pgx.NamedArgs{}
 

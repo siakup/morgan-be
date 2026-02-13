@@ -1,12 +1,12 @@
 package http
 
 import (
-	"net/http"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/siakup/morgan-be/libraries/middleware"
 	"github.com/siakup/morgan-be/libraries/responses"
+	"github.com/siakup/morgan-be/libraries/validation"
 	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
+	"github.com/siakup/morgan-be/libraries/errors"
 )
 
 type UpdateSeverityLevelRequest struct {
@@ -16,9 +16,10 @@ type UpdateSeverityLevelRequest struct {
 
 func (h *SeverityLevelHandler) UpdateSeverityLevel(c *fiber.Ctx) error {
 	id := c.Params("id")
-	var req UpdateSeverityLevelRequest
-	if err := c.BodyParser(&req); err != nil {
-		return c.Status(http.StatusBadRequest).JSON(responses.Fail("BAD_REQUEST", "Invalid request body"))
+	raw := c.Locals(validation.ValidatedBodyKey)
+	req, ok := raw.(*UpdateSeverityLevelRequest)
+	if !ok || req == nil {
+		return h.handleError(c, errors.BadRequest("invalid request body"))
 	}
 
 	userId, _ := c.Locals(middleware.XUserIdKey).(string)

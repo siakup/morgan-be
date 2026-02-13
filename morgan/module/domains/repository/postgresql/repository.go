@@ -9,7 +9,7 @@ import (
 
 var _ domain.DomainRepository = (*Repository)(nil)
 
-// DomainEntity maps to organization.domains table.
+// DomainEntity maps to master.domains table.
 type DomainEntity struct {
 	Id        string     `db:"id" map:"Id"`
 	Name      string     `db:"name" map:"Name"`

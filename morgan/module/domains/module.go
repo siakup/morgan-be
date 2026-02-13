@@ -22,7 +22,7 @@ var Module = fx.Options(
 			usecase.NewUseCase,
 			fx.As(new(domain.UseCase)),
 		),
-		http.NewDomaiHandler,
+		http.NewDomainHandler,
 	),
 	fx.Invoke(registerRoutes),
 )

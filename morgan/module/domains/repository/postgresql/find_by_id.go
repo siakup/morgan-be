@@ -19,7 +19,7 @@ var queryFindById = `
     created_by,
     updated_by,
     deleted_by
-	FROM organization.domains
+	FROM master.domains
 	WHERE id = @id AND deleted_at IS NULL
 	LIMIT 1
 `

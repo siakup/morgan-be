@@ -6,7 +6,9 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/siakup/morgan-be/libraries/middleware"
 	"github.com/siakup/morgan-be/libraries/responses"
+	"github.com/siakup/morgan-be/libraries/validation"
 	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
+	"github.com/siakup/morgan-be/libraries/errors"
 )
 
 type CreateSeverityLevelRequest struct {
@@ -15,9 +17,10 @@ type CreateSeverityLevelRequest struct {
 }
 
 func (h *SeverityLevelHandler) CreateSeverityLevel(c *fiber.Ctx) error {
-	var req CreateSeverityLevelRequest
-	if err := c.BodyParser(&req); err != nil {
-		return c.Status(http.StatusBadRequest).JSON(responses.Fail("BAD_REQUEST", "Invalid request body"))
+	raw := c.Locals(validation.ValidatedBodyKey)
+	req, ok := raw.(*CreateSeverityLevelRequest)
+	if !ok || req == nil {
+		return h.handleError(c, errors.BadRequest("invalid request body"))
 	}
 
 	userId, _ := c.Locals(middleware.XUserIdKey).(string)

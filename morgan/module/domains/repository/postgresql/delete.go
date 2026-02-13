@@ -6,7 +6,7 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-var queryDelete = `UPDATE organization.domains
+var queryDelete = `UPDATE master.domains
 SET
     deleted_at = NOW(),
     deleted_by = @deleted_by

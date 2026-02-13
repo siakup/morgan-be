@@ -7,6 +7,7 @@ import (
 	"github.com/siakup/morgan-be/libraries/errors"
 	"github.com/siakup/morgan-be/libraries/middleware"
 	"github.com/siakup/morgan-be/libraries/responses"
+	"github.com/siakup/morgan-be/libraries/validation"
 	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
 )
 
@@ -30,10 +31,10 @@ func (h *SeverityLevelHandler) RegisterRoutes(app *fiber.App) {
 
 	// Adjust permissions as needed
 	group.Get("/", h.auth.Authenticate("severity_levels.view"), h.GetSeverityLevels)
-	group.Get("/:id", h.auth.Authenticate("severity_levels.view"), h.GetSeverityLevelByID)
-	group.Post("/", h.auth.Authenticate("severity_levels.edit"), h.CreateSeverityLevel)
-	group.Put("/:id", h.auth.Authenticate("severity_levels.edit"), h.UpdateSeverityLevel)
-	group.Delete("/:id", h.auth.Authenticate("severity_levels.edit"), h.DeleteSeverityLevel)
+	group.Get(":id", h.auth.Authenticate("severity_levels.view"), h.GetSeverityLevelByID)
+	group.Post("/", h.auth.Authenticate("severity_levels.edit"), validation.ValidateBody(func() interface{} { return &CreateSeverityLevelRequest{} }), h.CreateSeverityLevel)
+	group.Put(":id", h.auth.Authenticate("severity_levels.edit"), validation.ValidateBody(func() interface{} { return &UpdateSeverityLevelRequest{} }), h.UpdateSeverityLevel)
+	group.Delete(":id", h.auth.Authenticate("severity_levels.edit"), h.DeleteSeverityLevel)
 }
 
 // handleError handles errors by mapping them to standardized responses.
