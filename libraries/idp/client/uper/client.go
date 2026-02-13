@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 
 	"github.com/pkg/errors"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp/client"
+	"github.com/siakup/morgan-be/libraries/idp/client"
 )
 
 func (i *Idp) ClearSession(ctx context.Context, token string) (*client.GeneralResponse, error) {

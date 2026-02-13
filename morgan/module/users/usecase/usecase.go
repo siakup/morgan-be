@@ -3,8 +3,8 @@ package usecase
 import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/domain"
+	"github.com/siakup/morgan-be/libraries/idp"
+	"github.com/siakup/morgan-be/morgan/module/users/domain"
 )
 
 var _ domain.UseCase = (*UseCase)(nil)

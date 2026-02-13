@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains/domain"
+	"github.com/siakup/morgan-be/morgan/module/domains/domain"
 )
 
 var _ domain.DomainRepository = (*Repository)(nil)

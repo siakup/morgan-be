@@ -1,5 +1,5 @@
 {
-  "app_name": "users-service",
+  "app_name": "morgan",
   "port": 8080,
   "read_wait_timeout": "30s",
   "write_wait_timeout": "30s",
@@ -7,9 +7,9 @@
   "cors_allowed_origins": "*",
   "enable_compress": true,
 
-  "postgres_url": "postgres://postgres:postgres@localhost:5432/siakup_users?sslmode=disable",
+  "postgres_url": "postgres://user:pass@postgres:5432/morgan_be?sslmode=disable",
 
-  "redis_address": "localhost:6379",
+  "redis_address": "redis:6379",
   "redis_password": "",
   "redis_db": 0,
 
@@ -18,7 +18,7 @@
   "log_level": "debug",
   "log_format": "console",
 
-  "service_name": "users-service",
+  "service_name": "morgan",
   "exporter": "stdout",
   "endpoint": "localhost:4317",
   "insecure": true

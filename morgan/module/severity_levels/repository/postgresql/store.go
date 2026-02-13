@@ -3,7 +3,7 @@ package postgresql
 import (
 	"context"
 
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/domain"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
 )
 
 func (r *Repository) Store(ctx context.Context, s *domain.SeverityLevel) error {

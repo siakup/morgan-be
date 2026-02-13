@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/jackc/pgx/v5"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/domain"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
 )
 
 func (r *Repository) FindByID(ctx context.Context, id string) (*domain.SeverityLevel, error) {

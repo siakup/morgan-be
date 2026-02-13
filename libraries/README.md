@@ -1,6 +1,6 @@
 # Shared Libraries
 
-This directory contains shared libraries and utilities used across the `yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan` application. These libraries provide standardized implementations for common patterns, error handling, logging, and infrastructure integrations.
+This directory contains shared libraries and utilities used across the `github.com/siakup/morgan-be/morgan` application. These libraries provide standardized implementations for common patterns, error handling, logging, and infrastructure integrations.
 
 ## Modules
 
@@ -43,8 +43,8 @@ Import these packages into your modules to ensure consistency across the applica
 
 ```go
 import (
-    "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/errors"
-    "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/responses"
+    "github.com/siakup/morgan-be/libraries/errors"
+    "github.com/siakup/morgan-be/libraries/responses"
     // ...
 )
 ```

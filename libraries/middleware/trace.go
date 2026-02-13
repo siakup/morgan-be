@@ -5,7 +5,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/rs/zerolog/log"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/helper"
+	"github.com/siakup/morgan-be/libraries/helper"
 )
 
 func TraceMiddleware(c *fiber.Ctx) error {

@@ -7,12 +7,12 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp/client"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/config"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/usecase"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/tests/mocks"
+	"github.com/siakup/morgan-be/libraries/idp"
+	"github.com/siakup/morgan-be/libraries/idp/client"
+	"github.com/siakup/morgan-be/morgan/config"
+	"github.com/siakup/morgan-be/morgan/module/redirect/domain"
+	"github.com/siakup/morgan-be/morgan/module/redirect/usecase"
+	"github.com/siakup/morgan-be/morgan/tests/mocks"
 )
 
 func TestUseCase_Redirect(t *testing.T) {

@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/domain"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
 )
 
 // ShiftGroupsUseCaseMock is a mock implementation of domain.UseCase

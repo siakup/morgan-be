@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/domain"
+	"github.com/siakup/morgan-be/morgan/module/users/domain"
 )
 
 // UsersUseCaseMock is a mock for Users UseCase

@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/domain"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
 )
 
 var _ domain.UseCase = (*UseCase)(nil)

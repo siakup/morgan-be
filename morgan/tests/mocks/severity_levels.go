@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/domain"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
 )
 
 // SeverityLevelsUseCaseMock is a mock implementation of domain.UseCase

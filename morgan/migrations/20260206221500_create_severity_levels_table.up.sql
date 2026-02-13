@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS hr.severity_levels
+CREATE TABLE IF NOT EXISTS master.severity_levels
 (
     id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name        VARCHAR(100) NOT NULL,

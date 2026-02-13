@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/types"
+	"github.com/siakup/morgan-be/libraries/types"
 )
 
 // ShiftSession represents the domain Shift Session entity.

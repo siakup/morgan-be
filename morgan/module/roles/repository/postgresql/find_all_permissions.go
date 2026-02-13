@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/jackc/pgx/v5"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles/domain"
+	"github.com/siakup/morgan-be/morgan/module/roles/domain"
 )
 
 // PermissionEntity represents the database schema for permissions.

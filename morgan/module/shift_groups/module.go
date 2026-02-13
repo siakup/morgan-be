@@ -3,10 +3,10 @@ package shift_groups
 import (
 	gofiber "github.com/gofiber/fiber/v2"
 	"go.uber.org/fx"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/delivery/http"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/repository/postgresql"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/usecase"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/delivery/http"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/repository/postgresql"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/usecase"
 )
 
 // Module exports the shift_groups module for Fx.

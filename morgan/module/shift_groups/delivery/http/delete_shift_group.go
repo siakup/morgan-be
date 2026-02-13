@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/middleware"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/responses"
+	"github.com/siakup/morgan-be/libraries/middleware"
+	"github.com/siakup/morgan-be/libraries/responses"
 )
 
 func (h *ShiftGroupHandler) DeleteShiftGroup(c *fiber.Ctx) error {

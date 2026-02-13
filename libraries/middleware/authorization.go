@@ -11,7 +11,7 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/redis/go-redis/v9"
 	"github.com/rs/zerolog"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp"
+	"github.com/siakup/morgan-be/libraries/idp"
 )
 
 const (

@@ -8,9 +8,9 @@ import (
 	"github.com/jackc/pgx/v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles/usecase"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/tests/mocks"
+	"github.com/siakup/morgan-be/morgan/module/roles/domain"
+	"github.com/siakup/morgan-be/morgan/module/roles/usecase"
+	"github.com/siakup/morgan-be/morgan/tests/mocks"
 )
 
 func TestUseCase_Roles(t *testing.T) {

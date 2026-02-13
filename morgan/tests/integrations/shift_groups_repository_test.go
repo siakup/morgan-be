@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	libtypes "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/types"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/domain"
-	shiftGroupsRepo "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/repository/postgresql"
+	libtypes "github.com/siakup/morgan-be/libraries/types"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
+	shiftGroupsRepo "github.com/siakup/morgan-be/morgan/module/shift_groups/repository/postgresql"
 )
 
 func TestShiftGroupsRepository(t *testing.T) {

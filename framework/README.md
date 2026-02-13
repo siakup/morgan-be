@@ -30,11 +30,11 @@ package main
 
 import (
     "go.uber.org/fx"
-    "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/bunnymq"
-    "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/config"
-    "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/fiber"
-    "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/postgres"
-    "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/redis"
+    "github.com/siakup/morgan-be/framework/bunnymq"
+    "github.com/siakup/morgan-be/framework/config"
+    "github.com/siakup/morgan-be/framework/fiber"
+    "github.com/siakup/morgan-be/framework/postgres"
+    "github.com/siakup/morgan-be/framework/redis"
 )
 
 // Define your application config (maps to environment variables)

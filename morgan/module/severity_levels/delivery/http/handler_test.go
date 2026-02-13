@@ -11,10 +11,10 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/middleware"
-	deliverhttp "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/delivery/http"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/tests/mocks"
+	"github.com/siakup/morgan-be/libraries/middleware"
+	deliverhttp "github.com/siakup/morgan-be/morgan/module/severity_levels/delivery/http"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
+	"github.com/siakup/morgan-be/morgan/tests/mocks"
 )
 
 func setupSeverityLevelApp(useCase domain.UseCase) *fiber.App {

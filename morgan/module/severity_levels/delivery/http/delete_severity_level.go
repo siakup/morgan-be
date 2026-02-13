@@ -2,8 +2,8 @@ package http
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/middleware"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/responses"
+	"github.com/siakup/morgan-be/libraries/middleware"
+	"github.com/siakup/morgan-be/libraries/responses"
 )
 
 func (h *SeverityLevelHandler) DeleteSeverityLevel(c *fiber.Ctx) error {

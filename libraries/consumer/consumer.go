@@ -5,7 +5,7 @@ import (
 
 	amqp "github.com/rabbitmq/amqp091-go"
 	"github.com/rs/zerolog/log"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/bunnymq"
+	"github.com/siakup/morgan-be/framework/bunnymq"
 )
 
 // Handler is the function signature for processing messages.

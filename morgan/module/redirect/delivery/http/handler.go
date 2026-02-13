@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/responses"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/domain"
+	"github.com/siakup/morgan-be/libraries/responses"
+	"github.com/siakup/morgan-be/morgan/module/redirect/domain"
 )
 
 type RedirectHandler struct {

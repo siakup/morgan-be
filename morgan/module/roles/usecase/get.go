@@ -6,8 +6,8 @@ import (
 
 	"github.com/jackc/pgx/v5"
 	"github.com/rs/zerolog"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/errors"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles/domain"
+	"github.com/siakup/morgan-be/libraries/errors"
+	"github.com/siakup/morgan-be/morgan/module/roles/domain"
 )
 
 // Get finds a role by their unique identifier.

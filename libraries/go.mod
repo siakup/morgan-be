@@ -1,8 +1,8 @@
-module yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib
+module github.com/siakup/morgan-be/libraries
 
 go 1.25.5
 
-replace yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework v1.0.0 => ../framework
+replace github.com/siakup/morgan-be/framework v1.0.0 => ../framework
 
 require (
 	github.com/go-resty/resty/v2 v2.17.1
@@ -14,7 +14,7 @@ require (
 	github.com/redis/go-redis/v9 v9.17.2
 	github.com/rs/zerolog v1.34.0
 	go.uber.org/fx v1.24.0
-	yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework v1.0.0
+	github.com/siakup/morgan-be/framework v1.0.0
 )
 
 require (

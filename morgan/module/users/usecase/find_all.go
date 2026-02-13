@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/rs/zerolog"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/errors"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/domain"
+	"github.com/siakup/morgan-be/libraries/errors"
+	"github.com/siakup/morgan-be/morgan/module/users/domain"
 )
 
 // FindAll retrieves a list of users based on filter criteria.

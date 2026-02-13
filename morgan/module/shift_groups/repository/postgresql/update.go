@@ -3,7 +3,7 @@ package postgresql
 import (
 	"context"
 
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/domain"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
 )
 
 func (r *Repository) Update(ctx context.Context, s *domain.ShiftGroup) error {

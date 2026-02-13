@@ -7,10 +7,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp/client"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/usecase"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/tests/mocks"
+	"github.com/siakup/morgan-be/libraries/idp/client"
+	"github.com/siakup/morgan-be/morgan/module/users/domain"
+	"github.com/siakup/morgan-be/morgan/module/users/usecase"
+	"github.com/siakup/morgan-be/morgan/tests/mocks"
 )
 
 func TestUseCase_Users(t *testing.T) {

@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/pkg/errors"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp/client"
+	"github.com/siakup/morgan-be/libraries/idp/client"
 )
 
 func (i *Idp) GetUserRoles(ctx context.Context, token string, params map[string]string) (*client.GeneralResponse, error) {

@@ -5,9 +5,9 @@ import (
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/responses"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/types"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains/domain"
+	"github.com/siakup/morgan-be/libraries/responses"
+	"github.com/siakup/morgan-be/libraries/types"
+	"github.com/siakup/morgan-be/morgan/module/domains/domain"
 )
 
 type (

@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp"
+	"github.com/siakup/morgan-be/libraries/idp"
 )
 
 // Institution represents the institution settings for redirect.

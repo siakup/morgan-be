@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS schedule.shift_sessions;
+DROP TABLE IF EXISTS hr.shift_sessions;

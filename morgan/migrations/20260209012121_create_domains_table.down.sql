@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS organization.domains;
+DROP TABLE IF EXISTS master.domains;

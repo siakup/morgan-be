@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/domain"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
 )
 
 var _ domain.ShiftGroupRepository = (*Repository)(nil)

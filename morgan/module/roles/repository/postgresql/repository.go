@@ -5,7 +5,7 @@ import (
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles/domain"
+	"github.com/siakup/morgan-be/morgan/module/roles/domain"
 )
 
 var _ domain.RoleRepository = (*Repository)(nil)

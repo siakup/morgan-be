@@ -3,10 +3,10 @@ package domains
 import (
 	gofiber "github.com/gofiber/fiber/v2"
 	"go.uber.org/fx"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains/delivery/http"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains/repository/postgresql"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains/usecase"
+	"github.com/siakup/morgan-be/morgan/module/domains/delivery/http"
+	"github.com/siakup/morgan-be/morgan/module/domains/domain"
+	"github.com/siakup/morgan-be/morgan/module/domains/repository/postgresql"
+	"github.com/siakup/morgan-be/morgan/module/domains/usecase"
 )
 
 // Module exports the roles module for Fx.

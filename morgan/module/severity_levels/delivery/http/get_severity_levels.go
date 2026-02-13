@@ -2,9 +2,9 @@ package http
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/responses"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/types"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/domain"
+	"github.com/siakup/morgan-be/libraries/responses"
+	"github.com/siakup/morgan-be/libraries/types"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
 )
 
 func (h *SeverityLevelHandler) GetSeverityLevels(c *fiber.Ctx) error {

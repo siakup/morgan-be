@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions/domain"
+	"github.com/siakup/morgan-be/morgan/module/shift_sessions/domain"
 )
 
 // ShiftSessionsUseCaseMock is a mock for ShiftSessions UseCase

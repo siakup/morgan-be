@@ -11,10 +11,10 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/middleware"
-	deliverhttp "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains/delivery/http"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/tests/mocks"
+	"github.com/siakup/morgan-be/libraries/middleware"
+	deliverhttp "github.com/siakup/morgan-be/morgan/module/domains/delivery/http"
+	"github.com/siakup/morgan-be/morgan/module/domains/domain"
+	"github.com/siakup/morgan-be/morgan/tests/mocks"
 )
 
 func setupDomainApp(useCase domain.UseCase) *fiber.App {

@@ -3,10 +3,10 @@ package users
 import (
 	gofiber "github.com/gofiber/fiber/v2"
 	"go.uber.org/fx"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/delivery/http"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/repository/postgresql"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/usecase"
+	"github.com/siakup/morgan-be/morgan/module/users/delivery/http"
+	"github.com/siakup/morgan-be/morgan/module/users/domain"
+	"github.com/siakup/morgan-be/morgan/module/users/repository/postgresql"
+	"github.com/siakup/morgan-be/morgan/module/users/usecase"
 )
 
 // Module exports the users module for Fx.

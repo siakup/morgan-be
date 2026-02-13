@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/domain"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
 )
 
 var _ domain.UseCase = (*UseCase)(nil)

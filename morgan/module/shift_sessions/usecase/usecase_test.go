@@ -8,9 +8,9 @@ import (
 	"github.com/jackc/pgx/v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions/usecase"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/tests/mocks"
+	"github.com/siakup/morgan-be/morgan/module/shift_sessions/domain"
+	"github.com/siakup/morgan-be/morgan/module/shift_sessions/usecase"
+	"github.com/siakup/morgan-be/morgan/tests/mocks"
 )
 
 func TestUseCase_ShiftSessions(t *testing.T) {

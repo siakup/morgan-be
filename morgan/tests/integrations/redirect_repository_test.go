@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/domain"
-	redirectRepo "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/repository/postgresql"
+	"github.com/siakup/morgan-be/morgan/module/redirect/domain"
+	redirectRepo "github.com/siakup/morgan-be/morgan/module/redirect/repository/postgresql"
 )
 
 func TestRedirectRepository(t *testing.T) {

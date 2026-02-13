@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/domain"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
 )
 
 func (u *UseCase) Update(ctx context.Context, sl *domain.SeverityLevel) error {

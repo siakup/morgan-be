@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/rs/zerolog"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/errors"
+	"github.com/siakup/morgan-be/libraries/errors"
 )
 
 // Delete removes a role from the system.

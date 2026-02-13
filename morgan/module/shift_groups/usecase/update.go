@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/errors"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/domain"
+	"github.com/siakup/morgan-be/libraries/errors"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
 )
 
 func (u *UseCase) Update(ctx context.Context, shiftGroup *domain.ShiftGroup) error {

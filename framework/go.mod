@@ -1,4 +1,4 @@
-module yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework
+module github.com/siakup/morgan-be/framework
 
 go 1.25.5
 

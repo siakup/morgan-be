@@ -6,9 +6,9 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	libtypes "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/types"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/domain"
-	usersRepo "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/repository/postgresql"
+	libtypes "github.com/siakup/morgan-be/libraries/types"
+	"github.com/siakup/morgan-be/morgan/module/users/domain"
+	usersRepo "github.com/siakup/morgan-be/morgan/module/users/repository/postgresql"
 )
 
 func TestUsersRepository(t *testing.T) {

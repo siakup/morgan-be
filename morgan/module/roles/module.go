@@ -3,10 +3,10 @@ package roles
 import (
 	gofiber "github.com/gofiber/fiber/v2"
 	"go.uber.org/fx"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles/delivery/http"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles/repository/postgresql"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles/usecase"
+	"github.com/siakup/morgan-be/morgan/module/roles/delivery/http"
+	"github.com/siakup/morgan-be/morgan/module/roles/domain"
+	"github.com/siakup/morgan-be/morgan/module/roles/repository/postgresql"
+	"github.com/siakup/morgan-be/morgan/module/roles/usecase"
 )
 
 // Module exports the roles module for Fx.

@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp/client"
+	"github.com/siakup/morgan-be/libraries/idp/client"
 )
 
 // IDPProviderMock mocks the IDP provider

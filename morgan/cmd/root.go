@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/version"
+	"github.com/siakup/morgan-be/morgan/version"
 )
 
 var root = &cobra.Command{

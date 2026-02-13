@@ -3,20 +3,20 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 	"go.uber.org/fx"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/common/logger"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/config"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/fiber"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/otel"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/postgres"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/redis"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/middleware"
-	internalConfig "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/config"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users"
+	"github.com/siakup/morgan-be/framework/common/logger"
+	"github.com/siakup/morgan-be/framework/config"
+	"github.com/siakup/morgan-be/framework/fiber"
+	"github.com/siakup/morgan-be/framework/otel"
+	"github.com/siakup/morgan-be/framework/postgres"
+	"github.com/siakup/morgan-be/framework/redis"
+	"github.com/siakup/morgan-be/libraries/idp"
+	"github.com/siakup/morgan-be/libraries/middleware"
+	internalConfig "github.com/siakup/morgan-be/morgan/config"
+	"github.com/siakup/morgan-be/morgan/module/domains"
+	"github.com/siakup/morgan-be/morgan/module/redirect"
+	"github.com/siakup/morgan-be/morgan/module/roles"
+	"github.com/siakup/morgan-be/morgan/module/shift_sessions"
+	"github.com/siakup/morgan-be/morgan/module/users"
 )
 
 var serve = &cobra.Command{
@@ -149,6 +149,7 @@ func serveE(cmd *cobra.Command, args []string) error {
 		users.Module,
 		redirect.Module,
 		shift_sessions.Module,
+		domains.Module,
 		fx.Provide(
 			fx.Annotate(
 				idp.NewIDP,

@@ -3,10 +3,10 @@ package shift_sessions
 import (
 	gofiber "github.com/gofiber/fiber/v2"
 	"go.uber.org/fx"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions/delivery/http"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions/repository/postgresql"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions/usecase"
+	"github.com/siakup/morgan-be/morgan/module/shift_sessions/delivery/http"
+	"github.com/siakup/morgan-be/morgan/module/shift_sessions/domain"
+	"github.com/siakup/morgan-be/morgan/module/shift_sessions/repository/postgresql"
+	"github.com/siakup/morgan-be/morgan/module/shift_sessions/usecase"
 )
 
 // Module exports the roles module for Fx.

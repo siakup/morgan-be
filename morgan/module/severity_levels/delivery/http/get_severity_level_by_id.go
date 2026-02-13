@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/responses"
+	"github.com/siakup/morgan-be/libraries/responses"
 )
 
 func (h *SeverityLevelHandler) GetSeverityLevelByID(c *fiber.Ctx) error {

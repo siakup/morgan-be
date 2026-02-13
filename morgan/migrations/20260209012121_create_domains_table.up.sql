@@ -1,6 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS organization;
-
-CREATE TABLE IF NOT EXISTS organization.domains (
+CREATE TABLE IF NOT EXISTS master.domains (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(100) NOT NULL,
     status BOOLEAN NOT NULL DEFAULT true,
@@ -15,4 +13,4 @@ CREATE TABLE IF NOT EXISTS organization.domains (
 );
 
 CREATE INDEX idx_domains_status 
-ON organization.domains(status);
+ON master.domains(status);

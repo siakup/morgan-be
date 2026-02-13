@@ -1,0 +1,721 @@
+{
+  "info": {
+    "name": "Morgan-BE API Collection",
+    "description": "Complete API collection for Morgan-BE microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users Module",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": ["{{base_url}}"],
+              "path": ["users"]
+            },
+            "description": "Get all users - Requires: users.manage.all.view permission"
+          },
+          "response": []
+        },
+        {
+          "name": "Sync User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"123\",\n  \"email\": \"user@example.com\",\n  \"name\": \"John Doe\",\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": ["{{base_url}}"],
+              "path": ["users"]
+            },
+            "description": "Sync/Create user - Requires: users.manage.all.edit permission"
+          },
+          "response": []
+        },
+        {
+          "name": "Update User Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"inactive\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/:id/status",
+              "host": ["{{base_url}}"],
+              "path": ["users", ":id", "status"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Update user status - Requires: users.manage.all.edit permission"
+          },
+          "response": []
+        },
+        {
+          "name": "Assign Role to User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role_id\": \"456\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/:id/roles",
+              "host": ["{{base_url}}"],
+              "path": ["users", ":id", "roles"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Assign role to user - Requires: users.manage.all.edit permission"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Roles Module",
+      "item": [
+        {
+          "name": "Get All Permissions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/roles/permissions",
+              "host": ["{{base_url}}"],
+              "path": ["roles", "permissions"]
+            },
+            "description": "Get all available permissions - Requires: roles.manage.all.view permission"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Roles",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/roles",
+              "host": ["{{base_url}}"],
+              "path": ["roles"]
+            },
+            "description": "Get all roles - Requires: roles.manage.all.view permission"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Role by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/roles/:id",
+              "host": ["{{base_url}}"],
+              "path": ["roles", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Get role by ID - Requires: roles.manage.all.view permission"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Role",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Admin\",\n  \"description\": \"Administrator role\",\n  \"permissions\": [\"users.manage.all.view\", \"users.manage.all.edit\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/roles",
+              "host": ["{{base_url}}"],
+              "path": ["roles"]
+            },
+            "description": "Create new role - Requires: roles.manage.all.edit permission"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Role",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Super Admin\",\n  \"description\": \"Super Administrator role\",\n  \"permissions\": [\"users.manage.all.view\", \"users.manage.all.edit\", \"roles.manage.all.edit\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/roles/:id",
+              "host": ["{{base_url}}"],
+              "path": ["roles", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Update role - Requires: roles.manage.all.edit permission"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Domains Module",
+      "item": [
+        {
+          "name": "Get All Domains",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/domains",
+              "host": ["{{base_url}}"],
+              "path": ["domains"]
+            },
+            "description": "Get all domains"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Domain by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/domains/:id",
+              "host": ["{{base_url}}"],
+              "path": ["domains", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Get domain by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Domain",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"example.com\",\n  \"description\": \"Example domain\",\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/domains",
+              "host": ["{{base_url}}"],
+              "path": ["domains"]
+            },
+            "description": "Create new domain"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Domain",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"example.com\",\n  \"description\": \"Updated domain\",\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/domains/:id",
+              "host": ["{{base_url}}"],
+              "path": ["domains", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Update domain"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Shift Sessions Module",
+      "item": [
+        {
+          "name": "Get All Shift Sessions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/shift-sessions",
+              "host": ["{{base_url}}"],
+              "path": ["shift-sessions"]
+            },
+            "description": "Get all shift sessions"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Shift Session by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/shift-sessions/:id",
+              "host": ["{{base_url}}"],
+              "path": ["shift-sessions", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Get shift session by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Shift Session",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Morning Shift\",\n  \"start_time\": \"06:00\",\n  \"end_time\": \"14:00\",\n  \"description\": \"Morning working hours\",\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/shift-sessions",
+              "host": ["{{base_url}}"],
+              "path": ["shift-sessions"]
+            },
+            "description": "Create new shift session"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Shift Session",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Morning Shift Updated\",\n  \"start_time\": \"07:00\",\n  \"end_time\": \"15:00\",\n  \"description\": \"Updated morning hours\",\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/shift-sessions/:id",
+              "host": ["{{base_url}}"],
+              "path": ["shift-sessions", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Update shift session"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Severity Levels Module",
+      "item": [
+        {
+          "name": "Get All Severity Levels",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/severity-levels",
+              "host": ["{{base_url}}"],
+              "path": ["severity-levels"]
+            },
+            "description": "Get all severity levels - Requires: severity_levels.view permission"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Severity Level by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/severity-levels/:id",
+              "host": ["{{base_url}}"],
+              "path": ["severity-levels", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Get severity level by ID - Requires: severity_levels.view permission"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Severity Level",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Critical\",\n  \"level\": 1,\n  \"description\": \"Critical severity level\",\n  \"color\": \"#FF0000\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/severity-levels",
+              "host": ["{{base_url}}"],
+              "path": ["severity-levels"]
+            },
+            "description": "Create new severity level - Requires: severity_levels.edit permission"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Shift Groups Module",
+      "item": [
+        {
+          "name": "Get All Shift Groups",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/shift-groups",
+              "host": ["{{base_url}}"],
+              "path": ["shift-groups"]
+            },
+            "description": "Get all shift groups - Requires: shift_groups.view permission"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Shift Group by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/shift-groups/:id",
+              "host": ["{{base_url}}"],
+              "path": ["shift-groups", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Get shift group by ID - Requires: shift_groups.view permission"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Shift Group",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Group A\",\n  \"description\": \"First shift group\",\n  \"shift_sessions\": [\"session-1\", \"session-2\"],\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/shift-groups",
+              "host": ["{{base_url}}"],
+              "path": ["shift-groups"]
+            },
+            "description": "Create new shift group - Requires: shift_groups.edit permission"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Redirect Module",
+      "item": [
+        {
+          "name": "Redirect by Institution ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/redirect/:institution_id",
+              "host": ["{{base_url}}"],
+              "path": ["redirect", ":institution_id"],
+              "variable": [
+                {
+                  "key": "institution_id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Redirect to OAuth callback for institution"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "auth_token",
+      "value": "YOUR_AUTH_TOKEN_HERE",
+      "type": "string"
+    }
+  ]
+}

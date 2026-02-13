@@ -9,8 +9,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	deliverhttp "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/delivery/http"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/tests/mocks"
+	deliverhttp "github.com/siakup/morgan-be/morgan/module/redirect/delivery/http"
+	"github.com/siakup/morgan-be/morgan/tests/mocks"
 )
 
 func TestRedirectHandler_Redirect(t *testing.T) {

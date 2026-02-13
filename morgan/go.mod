@@ -1,10 +1,10 @@
-module yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan
+module github.com/siakup/morgan-be/morgan
 
 go 1.25.5
 
-replace yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework v1.0.0 => ../framework
+replace github.com/siakup/morgan-be/framework v1.0.0 => ../framework
 
-replace yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib v1.0.0 => ../libraries
+replace github.com/siakup/morgan-be/libraries v1.0.0 => ../libraries
 
 require (
 	github.com/gofiber/fiber/v2 v2.52.10
@@ -17,8 +17,8 @@ require (
 	go.opentelemetry.io/otel v1.39.0
 	go.opentelemetry.io/otel/trace v1.39.0
 	go.uber.org/fx v1.24.0
-	yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework v1.0.0
-	yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib v1.0.0
+	github.com/siakup/morgan-be/framework v1.0.0
+	github.com/siakup/morgan-be/libraries v1.0.0
 )
 
 require (

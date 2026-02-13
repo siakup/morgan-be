@@ -6,11 +6,11 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/errors"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/idp"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/types"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/config"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/domain"
+	"github.com/siakup/morgan-be/libraries/errors"
+	"github.com/siakup/morgan-be/libraries/idp"
+	"github.com/siakup/morgan-be/libraries/types"
+	"github.com/siakup/morgan-be/morgan/config"
+	"github.com/siakup/morgan-be/morgan/module/redirect/domain"
 )
 
 var _ domain.RedirectUseCase = (*UseCase)(nil)

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/domain"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
 )
 
 func (r *Repository) FindAll(ctx context.Context, filter domain.SeverityLevelFilter) ([]*domain.SeverityLevel, int64, error) {

@@ -11,10 +11,10 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/middleware"
-	deliverhttp "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions/delivery/http"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_sessions/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/tests/mocks"
+	"github.com/siakup/morgan-be/libraries/middleware"
+	deliverhttp "github.com/siakup/morgan-be/morgan/module/shift_sessions/delivery/http"
+	"github.com/siakup/morgan-be/morgan/module/shift_sessions/domain"
+	"github.com/siakup/morgan-be/morgan/tests/mocks"
 )
 
 func setupShiftSessionApp(useCase domain.UseCase) *fiber.App {

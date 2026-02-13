@@ -3,10 +3,10 @@ package redirect
 import (
 	"github.com/gofiber/fiber/v2"
 	"go.uber.org/fx"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/delivery/http"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/repository/postgresql"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/usecase"
+	"github.com/siakup/morgan-be/morgan/module/redirect/delivery/http"
+	"github.com/siakup/morgan-be/morgan/module/redirect/domain"
+	"github.com/siakup/morgan-be/morgan/module/redirect/repository/postgresql"
+	"github.com/siakup/morgan-be/morgan/module/redirect/usecase"
 )
 
 var Module = fx.Module(

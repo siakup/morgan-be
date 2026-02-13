@@ -3,10 +3,10 @@ package severity_levels
 import (
 	gofiber "github.com/gofiber/fiber/v2"
 	"go.uber.org/fx"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/delivery/http"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/repository/postgresql"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/severity_levels/usecase"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/delivery/http"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/domain"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/repository/postgresql"
+	"github.com/siakup/morgan-be/morgan/module/severity_levels/usecase"
 )
 
 // Module exports the severity_levels module for Fx.

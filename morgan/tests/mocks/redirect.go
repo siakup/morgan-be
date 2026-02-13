@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/redirect/domain"
+	"github.com/siakup/morgan-be/morgan/module/redirect/domain"
 )
 
 // RedirectUseCaseMock is a mock for RedirectUseCase

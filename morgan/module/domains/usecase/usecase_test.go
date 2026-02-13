@@ -8,9 +8,9 @@ import (
 	"github.com/jackc/pgx/v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains/domain"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains/usecase"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/tests/mocks"
+	"github.com/siakup/morgan-be/morgan/module/domains/domain"
+	"github.com/siakup/morgan-be/morgan/module/domains/usecase"
+	"github.com/siakup/morgan-be/morgan/tests/mocks"
 )
 
 func TestUseCase_Domains(t *testing.T) {

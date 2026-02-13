@@ -1,6 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS schedule;
-
-CREATE TABLE IF NOT EXISTS schedule.shift_sessions (
+CREATE TABLE IF NOT EXISTS hr.shift_sessions (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(50) NOT NULL,
     start TIME NOT NULL,
@@ -17,4 +15,4 @@ CREATE TABLE IF NOT EXISTS schedule.shift_sessions (
 );
 
 CREATE INDEX idx_shift_sessions_status 
-ON schedule.shift_sessions(status);
+ON hr.shift_sessions(status);

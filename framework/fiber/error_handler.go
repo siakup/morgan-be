@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	libErrors "yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/errors"
+	libErrors "github.com/siakup/morgan-be/libraries/errors"
 )
 
 func CustomErrorHandler(c *fiber.Ctx, err error) error {

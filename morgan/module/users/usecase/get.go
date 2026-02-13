@@ -6,8 +6,8 @@ import (
 
 	"github.com/jackc/pgx/v5"
 	"github.com/rs/zerolog"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/errors"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/users/domain"
+	"github.com/siakup/morgan-be/libraries/errors"
+	"github.com/siakup/morgan-be/morgan/module/users/domain"
 )
 
 // Get retrieves a user by ID.

@@ -3,7 +3,7 @@ package domain
 import (
 	"context"
 
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/types"
+	"github.com/siakup/morgan-be/libraries/types"
 )
 
 // Role represents the domain object for a Role.

@@ -1,6 +1,6 @@
-# Users Service (IAM)
+# Morgan Backend - IAM Service
 
-The **Users Service** is the central Identity and Access Management (IAM) component of the SiAKUP platform. It handles user synchronization, role-based access control (RBAC), permission management, and authentication flows via the central Identity Provider (IDP).
+**Morgan** is the central Identity and Access Management (IAM) microservice for the SiAKUP platform. It provides comprehensive user management, role-based access control (RBAC), permission management, and authentication flows via OpenID Connect (OIDC) Identity Provider integration.
 
 ## Features
 
@@ -13,18 +13,22 @@ The **Users Service** is the central Identity and Access Management (IAM) compon
 ## Project Structure
 
 ```text
-users/
+morgan/
 ├── cmd/            # Application entry points (serve, etc.)
 ├── config/         # Configuration structs and providers
-├── docs/           # OpenAPI specifications
-├── migrations/     # Database migration scripts
+├── docs/           # OpenAPI specifications & technical documentation
+├── migrations/     # Database migration scripts (26+ migrations)
 ├── module/         # Domain modules (Clean Architecture)
-│   ├── health/     # Health check module
-│   ├── redirect/   # IDP Redirect module
-│   ├── roles/      # Roles & Permissions module
-│   └── users/      # User management module
-├── version/        # Version information package
-├── Dockerfile
+│   ├── users/      # User management & synchronization
+│   ├── roles/      # Roles & Permissions (RBAC)
+│   ├── domains/    # Domain configuration
+│   ├── redirect/   # OAuth/OIDC redirect flow
+│   ├── shift_sessions/    # Shift scheduling
+│   ├── shift_groups/      # Shift group management
+│   └── severity_levels/   # Classification levels
+├── tests/          # Integration & unit tests
+├── version/        # Version information
+├── Dockerfile      # Multi-stage Go build
 ├── Makefile
 └── main.go
 ```
@@ -78,14 +82,14 @@ Example for `dev`:
 ### Configuration Examples
 
 #### 1. File Configuration (config/config.json)
-Place this file in the `users/config/` directory.
+Place this file in the `morgan/config/` directory.
 
 ```json
 {
-  "app_name": "users-service",
+  "app_name": "morgan",
   "port": 8080,
   "log_level": "info",
-  "postgres_url": "postgres://user:pass@postgres:5432/siakup_users",
+  "postgres_url": "postgres://user:pass@postgres:5432/morgan_be",
   "redis_address": "redis:6379",
   "redirectUrl": "http://localhost:3000/callback"
 }
@@ -96,13 +100,13 @@ Use Consul for application behavior that might change at runtime or shared confi
 
 ```bash
 # Set Log Level (Runtime adjustable)
-consul kv put config/users/dev/log_level debug
+consul kv put config/morgan/dev/log_level debug
 
 # Set Redirect URL (Business Logic)
-consul kv put config/users/dev/redirectUrl "http://staging-dashboard.com/callback"
+consul kv put config/morgan/dev/redirectUrl "http://staging-dashboard.com/callback"
 
 # Set Body Limit
-consul kv put config/users/dev/body_limit 10485760
+consul kv put config/morgan/dev/body_limit 10485760
 ```
 
 ### 3. Environment Variables (Infrastructure & Secrets)
@@ -113,7 +117,7 @@ Use Environment Variables for infrastructure binding (Ports) and sensitive crede
 export APP_PORT=8080
 
 # Sensitive Connection String (Contains Password)
-export APP_POSTGRES_URL="postgres://user:supersecret@db-prod:5432/siakup_users"
+export APP_POSTGRES_URL="postgres://user:supersecret@db-prod:5432/morgan_be"
 
 # Redis Address (Infrastructure)
 export APP_REDIS_ADDRESS="redis-prod:6379"

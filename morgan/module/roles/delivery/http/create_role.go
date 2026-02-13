@@ -4,10 +4,10 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/errors"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/middleware"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/responses"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/roles/domain"
+	"github.com/siakup/morgan-be/libraries/errors"
+	"github.com/siakup/morgan-be/libraries/middleware"
+	"github.com/siakup/morgan-be/libraries/responses"
+	"github.com/siakup/morgan-be/morgan/module/roles/domain"
 )
 
 type (

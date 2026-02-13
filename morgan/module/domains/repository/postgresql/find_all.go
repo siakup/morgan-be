@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/jackc/pgx/v5"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/object"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/domains/domain"
+	"github.com/siakup/morgan-be/libraries/object"
+	"github.com/siakup/morgan-be/morgan/module/domains/domain"
 )
 
 // FindAll retrieves a list of domains based on the provided filter.

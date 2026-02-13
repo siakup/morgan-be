@@ -2,9 +2,9 @@ package http
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/responses"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/types"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/module/shift_groups/domain"
+	"github.com/siakup/morgan-be/libraries/responses"
+	"github.com/siakup/morgan-be/libraries/types"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
 )
 
 func (h *ShiftGroupHandler) GetShiftGroups(c *fiber.Ctx) error {

@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/errors"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/responses"
+	"github.com/siakup/morgan-be/libraries/errors"
+	"github.com/siakup/morgan-be/libraries/responses"
 )
 
 type (

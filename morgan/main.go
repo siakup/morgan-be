@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/morgan/cmd"
+	"github.com/siakup/morgan-be/morgan/cmd"
 )
 
 func main() {

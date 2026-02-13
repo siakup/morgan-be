@@ -1,13 +1,13 @@
 package config
 
 import (
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/bunnymq"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/common/logger"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/fiber"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/otel"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/postgres"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/framework/redis"
-	"yuhuu.universitaspertamina.ac.id/siak/siakup/backend/lib/consumer"
+	"github.com/siakup/morgan-be/framework/bunnymq"
+	"github.com/siakup/morgan-be/framework/common/logger"
+	"github.com/siakup/morgan-be/framework/fiber"
+	"github.com/siakup/morgan-be/framework/otel"
+	"github.com/siakup/morgan-be/framework/postgres"
+	"github.com/siakup/morgan-be/framework/redis"
+	"github.com/siakup/morgan-be/libraries/consumer"
 )
 
 type ApplicationConfig struct {

@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS hr.severity_levels;
+DROP TABLE IF EXISTS master.severity_levels;
