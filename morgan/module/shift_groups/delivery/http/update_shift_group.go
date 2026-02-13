@@ -1,24 +1,19 @@
 package http
 
 import (
-	"net/http"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/siakup/morgan-be/libraries/middleware"
 	"github.com/siakup/morgan-be/libraries/responses"
+	"github.com/siakup/morgan-be/libraries/validator"
 	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/dto"
 )
-
-type UpdateShiftGroupRequest struct {
-	Name   string `json:"name" validate:"required"`
-	Status bool   `json:"status"`
-}
 
 func (h *ShiftGroupHandler) UpdateShiftGroup(c *fiber.Ctx) error {
 	id := c.Params("id")
-	var req UpdateShiftGroupRequest
-	if err := c.BodyParser(&req); err != nil {
-		return c.Status(http.StatusBadRequest).JSON(responses.Fail("BAD_REQUEST", "Invalid request body"))
+	var req dto.UpdateShiftGroupRequest
+	if err := validator.BindAndValidate(c, &req); err != nil {
+		return h.handleError(c, err)
 	}
 
 	userId, _ := c.Locals(middleware.XUserIdKey).(string)
@@ -30,7 +25,7 @@ func (h *ShiftGroupHandler) UpdateShiftGroup(c *fiber.Ctx) error {
 		UpdatedBy: &userId,
 	}
 
-	err := h.useCase.Update(c.Context(), &shiftGroup)
+	err := h.useCase.Update(c.UserContext(), &shiftGroup)
 	if err != nil {
 		return h.handleError(c, err)
 	}

@@ -6,18 +6,15 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/siakup/morgan-be/libraries/middleware"
 	"github.com/siakup/morgan-be/libraries/responses"
+	"github.com/siakup/morgan-be/libraries/validator"
 	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
+	"github.com/siakup/morgan-be/morgan/module/shift_groups/dto"
 )
 
-type CreateShiftGroupRequest struct {
-	Name   string `json:"name" validate:"required"`
-	Status bool   `json:"status"`
-}
-
 func (h *ShiftGroupHandler) CreateShiftGroup(c *fiber.Ctx) error {
-	var req CreateShiftGroupRequest
-	if err := c.BodyParser(&req); err != nil {
-		return c.Status(http.StatusBadRequest).JSON(responses.Fail("BAD_REQUEST", "Invalid request body"))
+	var req dto.CreateShiftGroupRequest
+	if err := validator.BindAndValidate(c, &req); err != nil {
+		return h.handleError(c, err)
 	}
 
 	userId, _ := c.Locals(middleware.XUserIdKey).(string)
@@ -29,7 +26,7 @@ func (h *ShiftGroupHandler) CreateShiftGroup(c *fiber.Ctx) error {
 		UpdatedBy: &userId,
 	}
 
-	err := h.useCase.Create(c.Context(), &shiftGroup)
+	err := h.useCase.Create(c.UserContext(), &shiftGroup)
 	if err != nil {
 		return h.handleError(c, err)
 	}

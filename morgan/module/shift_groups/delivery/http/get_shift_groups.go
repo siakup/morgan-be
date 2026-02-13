@@ -19,7 +19,7 @@ func (h *ShiftGroupHandler) GetShiftGroups(c *fiber.Ctx) error {
 		Search: c.Query("search"),
 	}
 
-	shiftGroups, total, err := h.useCase.FindAll(c.Context(), filter)
+	shiftGroups, total, err := h.useCase.FindAll(c.UserContext(), filter)
 	if err != nil {
 		return h.handleError(c, err)
 	}

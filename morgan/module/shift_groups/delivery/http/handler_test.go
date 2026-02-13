@@ -9,12 +9,12 @@ import (
 	"testing"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
 	"github.com/siakup/morgan-be/libraries/middleware"
 	deliverhttp "github.com/siakup/morgan-be/morgan/module/shift_groups/delivery/http"
 	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
 	"github.com/siakup/morgan-be/morgan/tests/mocks"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
 )
 
 func setupShiftGroupApp(useCase domain.UseCase) *fiber.App {
@@ -81,7 +81,7 @@ func TestShiftGroupHandler_GetShiftGroupByID(t *testing.T) {
 		app := setupShiftGroupApp(mockUseCase)
 
 		sg := &domain.ShiftGroup{Id: "sg1", Name: "Morning Shift"}
-		mockUseCase.On("FindByID", mock.Anything, "sg1").Return(sg, nil).Once()
+		mockUseCase.On("Get", mock.Anything, "sg1").Return(sg, nil).Once()
 
 		req := httptest.NewRequest(http.MethodGet, "/shift-groups/sg1", nil)
 		resp, err := app.Test(req)
@@ -95,7 +95,7 @@ func TestShiftGroupHandler_GetShiftGroupByID(t *testing.T) {
 		mockUseCase := new(mocks.ShiftGroupsUseCaseMock)
 		app := setupShiftGroupApp(mockUseCase)
 
-		mockUseCase.On("FindByID", mock.Anything, "sg1").Return((*domain.ShiftGroup)(nil), errors.New("fail")).Once()
+		mockUseCase.On("Get", mock.Anything, "sg1").Return((*domain.ShiftGroup)(nil), errors.New("fail")).Once()
 
 		req := httptest.NewRequest(http.MethodGet, "/shift-groups/sg1", nil)
 		resp, err := app.Test(req)

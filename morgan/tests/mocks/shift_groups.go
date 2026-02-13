@@ -3,8 +3,8 @@ package mocks
 import (
 	"context"
 
-	"github.com/stretchr/testify/mock"
 	"github.com/siakup/morgan-be/morgan/module/shift_groups/domain"
+	"github.com/stretchr/testify/mock"
 )
 
 // ShiftGroupsUseCaseMock is a mock implementation of domain.UseCase
@@ -21,8 +21,8 @@ func (m *ShiftGroupsUseCaseMock) FindAll(ctx context.Context, filter domain.Shif
 	return args.Get(0).([]*domain.ShiftGroup), args.Get(1).(int64), args.Error(2)
 }
 
-// FindByID mocks the FindByID method
-func (m *ShiftGroupsUseCaseMock) FindByID(ctx context.Context, id string) (*domain.ShiftGroup, error) {
+// Get mocks the Get method
+func (m *ShiftGroupsUseCaseMock) Get(ctx context.Context, id string) (*domain.ShiftGroup, error) {
 	args := m.Called(ctx, id)
 	if args.Get(0) == nil {
 		return nil, args.Error(1)
