@@ -7,6 +7,7 @@ import (
 	"github.com/siakup/morgan-be/libraries/errors"
 	"github.com/siakup/morgan-be/libraries/middleware"
 	"github.com/siakup/morgan-be/libraries/responses"
+	"github.com/siakup/morgan-be/libraries/validation"
 	"github.com/siakup/morgan-be/morgan/module/shift_sessions/domain"
 )
 
@@ -28,17 +29,11 @@ func NewShiftSessionHandler(useCase domain.UseCase, auth *middleware.Authorizati
 func (h *ShiftSessionHandler) RegisterRoutes(app *fiber.App) {
 	group := app.Group("/shift-sessions", middleware.TraceMiddleware)
 
-	// group.Get("/", h.auth.Authenticate("shift_sessions.manage.all.view"), h.GetShiftSessions)
-	// group.Get("/:id", h.auth.Authenticate("shift_sessions.manage.all.view"), h.GetShiftSessionByID)
-	// group.Post("/", h.auth.Authenticate("shift_sessions.manage.all.edit"), h.CreateShiftSession)
-	// group.Put("/:id", h.auth.Authenticate("shift_sessions.manage.all.edit"), h.UpdateShiftSession)
-	// group.Delete("/:id", h.auth.Authenticate("shift_sessions.manage.all.edit"), h.DeleteShiftSession)
-
-	group.Get("/", h.GetShiftSessions)
-	group.Get("/:id", h.GetShiftSessionByID)
-	group.Post("/", h.CreateShiftSession)
-	group.Put("/:id", h.UpdateShiftSession)
-	group.Delete("/:id", h.DeleteShiftSession)
+	group.Get("/", h.auth.Authenticate("shift_sessions.manage.all.view"), h.GetShiftSessions)
+	group.Get("/:id", h.auth.Authenticate("shift_sessions.manage.all.view"), h.GetShiftSessionByID)
+	group.Post("/", h.auth.Authenticate("shift_sessions.manage.all.edit"), validation.ValidateBody(func() interface{} { return &CreateShiftSessionRequest{} }), h.CreateShiftSession)
+	group.Put("/:id", h.auth.Authenticate("shift_sessions.manage.all.edit"), validation.ValidateBody(func() interface{} { return &UpdateShiftSessionRequest{} }), h.UpdateShiftSession)
+	group.Delete("/:id", h.auth.Authenticate("shift_sessions.manage.all.edit"), h.DeleteShiftSession)
 }
 
 // handleError handles errors by mapping them to standardized responses.
