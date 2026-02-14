@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS hr.shift_sessions (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name VARCHAR(50) NOT NULL,
     start TIME NOT NULL,
     "end" TIME NOT NULL,
