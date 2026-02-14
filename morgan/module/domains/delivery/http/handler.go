@@ -26,11 +26,11 @@ func NewDomainHandler(useCase domain.UseCase, auth *middleware.AuthorizationMidd
 func (h *DomainHandler) RegisterRoutes(app *fiber.App) {
 	group := app.Group("/domains", middleware.TraceMiddleware)
 
-	group.Get("/", h.auth.Authenticate("domains.manage.all.view"), h.GetDomains)
-	group.Get("/:id", h.auth.Authenticate("domains.manage.all.view"), h.GetDomainByID)
-	group.Post("/", h.auth.Authenticate("domains.manage.all.edit"), validation.ValidateBody(func() interface{} { return &CreateDomainRequest{} }), h.CreateDomain)
-	group.Put("/:id", h.auth.Authenticate("domains.manage.all.edit"), validation.ValidateBody(func() interface{} { return &UpdateDomainRequest{} }), h.UpdateDomain)
-	group.Delete("/:id", h.auth.Authenticate("domains.manage.all.edit"), h.DeleteDomain)
+	group.Get("/", h.auth.Authenticate("domains.organization.domains.view"), h.GetDomains)
+	group.Get("/:id", h.auth.Authenticate("domains.organization.domains.view"), h.GetDomainByID)
+	group.Post("/", h.auth.Authenticate("domains.organization.domains.create"), validation.ValidateBody(func() interface{} { return &CreateDomainRequest{} }), h.CreateDomain)
+	group.Put("/:id", h.auth.Authenticate("domains.organization.domains.edit"), validation.ValidateBody(func() interface{} { return &UpdateDomainRequest{} }), h.UpdateDomain)
+	group.Delete("/:id", h.auth.Authenticate("domains.organization.domains.edit"), h.DeleteDomain)
 
 }
 

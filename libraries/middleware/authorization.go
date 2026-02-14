@@ -59,7 +59,6 @@ func (a *AuthorizationMiddleware) Authenticate(scopes ...string) fiber.Handler {
 
 			auth, err = a.findFromDB(ctx, authKey)
 			if err != nil {
-				// Don't log normal "not found" as error if it's just invalid session
 				if !errors.Is(err, pgx.ErrNoRows) {
 					logger.Error().Err(err).Msg("failed to get auth from db")
 				}
@@ -67,29 +66,8 @@ func (a *AuthorizationMiddleware) Authenticate(scopes ...string) fiber.Handler {
 			}
 
 			if auth.ExpiresAt.Before(time.Now()) {
-				logger.Info().Str("identity_provider", auth.IdentityProvider).Msg("token expired, attempting refresh")
-
-				idpClient, err := a.idp.GetIDP(ctx, auth.IdentityProvider)
-				if err != nil {
-					logger.Error().Err(err).Str("idp", auth.IdentityProvider).Msg("failed to get IDP client for refresh")
-					return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"message": "Unauthorized"})
-				}
-
-				newAccess, err := idpClient.Refresh(ctx, auth.AccessToken)
-				if nil != err {
-					logger.Warn().Err(err).Msg("failed to refresh token, removing session")
-					_ = a.removeOnDB(ctx, authKey)
-					return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"message": "Unauthorized"})
-				}
-
-				auth.AccessToken = newAccess.AccessToken
-				expiryDuration := time.Duration(newAccess.ExpiresIn-30) * time.Second
-				auth.ExpiresAt = time.Now().Add(expiryDuration)
-
-				if err = a.updateOnDB(ctx, auth); nil != err {
-					logger.Error().Err(err).Msg("failed to update session in db after refresh")
-					return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"message": "Unauthorized"})
-				}
+				logger.Info().Msg("token expired")
+				return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"message": "Unauthorized"})
 			}
 
 			if err = a.putOnCache(ctx, auth); nil != err {
@@ -104,8 +82,6 @@ func (a *AuthorizationMiddleware) Authenticate(scopes ...string) fiber.Handler {
 			}
 		}
 
-		// Context/Locals values (fiber way to pass data)
-		//get user id by seasion id
 		c.Locals(XTokenKey, auth.AccessToken)
 		c.Locals(XUserIdKey, auth.UserId)
 		c.Locals(XExternalSubject, auth.ExternalSubject)
@@ -128,7 +104,7 @@ func (a *AuthorizationMiddleware) findFromCache(ctx context.Context, key string)
 func (a *AuthorizationMiddleware) findFromDB(ctx context.Context, key string) (*UserRoles, error) {
 	const query = `
 		select
-		    session_id, institution_id, identity_provider, user_id, external_subject, roles, access_token, expires_at
+		    session_id, institution_id, user_id, external_subject, roles, access_token, expires_at
 		from auth.sessions
 		where session_id=@session_id
 		limit 1

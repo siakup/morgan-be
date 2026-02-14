@@ -250,5 +250,68 @@ INSERT INTO master.domains (id, name, status) VALUES
 ON CONFLICT DO NOTHING;
 
 -- ============================================================================
+-- 12. SESSIONS (test sessions for manual API testing)
+-- ============================================================================
+-- Session for Admin User with System Administrator role (all permissions)
+WITH admin_roles AS (
+    SELECT 
+        json_build_object(
+            'role_id', '550e8400-e29b-41d4-a716-446655440201'::TEXT,
+            'role_name', 'System Administrator',
+            'groups', ARRAY[]::TEXT[],
+            'permissions', COALESCE(
+                (
+                    SELECT ARRAY_AGG(DISTINCT p.code)
+                    FROM iam.role_permissions rp
+                    JOIN iam.permissions p ON rp.permission_id = p.id
+                    WHERE rp.role_id = '550e8400-e29b-41d4-a716-446655440201'::UUID
+                ),
+                ARRAY[]::TEXT[]
+            )
+        ) as role_json
+)
+INSERT INTO auth.sessions (session_id, institution_id, user_id, external_subject, roles, access_token, expires_at) 
+SELECT 
+    'test-admin-session-01' as session_id,
+    '550e8400-e29b-41d4-a716-446655440001'::UUID as institution_id,
+    '550e8400-e29b-41d4-a716-446655440301'::TEXT as user_id,
+    'admin@university.edu' as external_subject,
+    JSONB_BUILD_ARRAY(role_json::JSONB) as roles,
+    'test-admin-token-12345678901234567890' as access_token,
+    (NOW() + INTERVAL '30 days') as expires_at
+FROM admin_roles
+ON CONFLICT DO NOTHING;
+
+-- Session for Manager User with Manager role
+WITH manager_roles AS (
+    SELECT 
+        json_build_object(
+            'role_id', '550e8400-e29b-41d4-a716-446655440203'::TEXT,
+            'role_name', 'Manager',
+            'groups', ARRAY[]::TEXT[],
+            'permissions', COALESCE(
+                (
+                    SELECT ARRAY_AGG(DISTINCT p.code)
+                    FROM iam.role_permissions rp
+                    JOIN iam.permissions p ON rp.permission_id = p.id
+                    WHERE rp.role_id = '550e8400-e29b-41d4-a716-446655440203'::UUID
+                ),
+                ARRAY[]::TEXT[]
+            )
+        ) as role_json
+)
+INSERT INTO auth.sessions (session_id, institution_id, user_id, external_subject, roles, access_token, expires_at) 
+SELECT 
+    'test-manager-session-01' as session_id,
+    '550e8400-e29b-41d4-a716-446655440001'::UUID as institution_id,
+    '550e8400-e29b-41d4-a716-446655440302'::TEXT as user_id,
+    'manager@university.edu' as external_subject,
+    JSONB_BUILD_ARRAY(role_json::JSONB) as roles,
+    'test-manager-token-1234567890123456789011' as access_token,
+    (NOW() + INTERVAL '30 days') as expires_at
+FROM manager_roles
+ON CONFLICT DO NOTHING;
+
+-- ============================================================================
 -- End of Seed Data
 -- ============================================================================

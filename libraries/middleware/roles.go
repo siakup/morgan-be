@@ -7,14 +7,13 @@ import (
 
 type (
 	UserRoles struct {
-		IdentityProvider string    `json:"identity_provider"`
-		InstitutionId    string    `json:"institution_id"`
-		SessionId        string    `json:"session_id"`
-		UserId           string    `json:"user_id"`
-		ExternalSubject  string    `json:"external_subject"`
-		Roles            []Roles   `json:"roles"`
-		AccessToken      string    `json:"access_token"`
-		ExpiresAt        time.Time `json:"expires_at"`
+		InstitutionId   string    `db:"institution_id" json:"institution_id"`
+		SessionId       string    `db:"session_id" json:"session_id"`
+		UserId          string    `db:"user_id" json:"user_id"`
+		ExternalSubject string    `db:"external_subject" json:"external_subject"`
+		Roles           []Roles   `db:"roles" json:"roles"`
+		AccessToken     string    `db:"access_token" json:"access_token"`
+		ExpiresAt       time.Time `db:"expires_at" json:"expires_at"`
 	}
 	Roles struct {
 		Groups      []string `json:"groups"`
@@ -26,6 +25,20 @@ type (
 
 func (r *UserRoles) UnmarshalBinary(data []byte) error {
 	return json.Unmarshal(data, r)
+}
+
+func (r *UserRoles) Scan(src interface{}) error {
+	switch v := src.(type) {
+	case []byte:
+		return json.Unmarshal(v, r)
+	case string:
+		return json.Unmarshal([]byte(v), r)
+	case nil:
+		return nil
+	default:
+		b, _ := json.Marshal(v)
+		return json.Unmarshal(b, r)
+	}
 }
 
 func (r *Roles) UnmarshalBinary(data []byte) error {
