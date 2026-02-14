@@ -9,16 +9,16 @@ import (
 	"testing"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
 	"github.com/siakup/morgan-be/libraries/middleware"
 	deliverhttp "github.com/siakup/morgan-be/morgan/module/domains/delivery/http"
 	"github.com/siakup/morgan-be/morgan/module/domains/domain"
 	"github.com/siakup/morgan-be/morgan/tests/mocks"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
 )
 
 func setupDomainApp(useCase domain.UseCase) *fiber.App {
-	handler := deliverhttp.NewDomaiHandler(useCase, nil)
+	handler := deliverhttp.NewDomainHandler(useCase, nil)
 
 	app := fiber.New()
 

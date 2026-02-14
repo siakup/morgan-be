@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS master.domains (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name VARCHAR(100) NOT NULL,
     status BOOLEAN NOT NULL DEFAULT true,
 
