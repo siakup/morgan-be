@@ -6,7 +6,7 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-var queryDelete = `UPDATE schedule.shift_sessions
+var queryDelete = `UPDATE hr.shift_sessions
 SET
     deleted_at = NOW(),
     deleted_by = @deleted_by

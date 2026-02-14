@@ -8,7 +8,7 @@ import (
 )
 
 var queryStore = `
-	INSERT INTO schedule.shift_sessions (
+	INSERT INTO hr.shift_sessions (
 		name, start, "end", created_by, updated_by
 	) VALUES (
 		@name, @start, @end, @created_by, @updated_by
@@ -16,7 +16,6 @@ var queryStore = `
 	RETURNING id
 `
 
-// Store persists a new shift session to the database.
 func (r *Repository) Store(ctx context.Context, shiftSession *domain.ShiftSession) error {
 	rows, err := r.db.Query(ctx, queryStore, pgx.NamedArgs{
 		"name":       shiftSession.Name,

@@ -28,12 +28,12 @@ func NewUserHandler(useCase domain.UseCase, auth *middleware.AuthorizationMiddle
 func (h *UserHandler) RegisterRoutes(app *fiber.App) {
 	group := app.Group("/users", middleware.TraceMiddleware)
 
-	group.Get("/", h.auth.Authenticate("users.manage.all.view"), h.GetUsers)
+	group.Get("/", h.auth.Authenticate("users.iam.users.view"), h.GetUsers)
 
-	group.Post("/", h.auth.Authenticate("users.manage.all.edit"), h.SyncUser)
+	group.Post("/", h.auth.Authenticate("users.iam.users.create"), h.SyncUser)
 
-	group.Patch("/:id/status", h.auth.Authenticate("users.manage.all.edit"), h.UpdateStatus)
-	group.Post("/:id/roles", h.auth.Authenticate("users.manage.all.edit"), h.AssignRole)
+	group.Patch("/:id/status", h.auth.Authenticate("users.iam.users.edit"), h.UpdateStatus)
+	group.Post("/:id/roles", h.auth.Authenticate("users.iam.users.edit"), h.AssignRole)
 }
 
 // handleError handles errors by mapping them to standardized responses.

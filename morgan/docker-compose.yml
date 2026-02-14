@@ -30,9 +30,15 @@ services:
     build:
       context: ..
       dockerfile: morgan/Dockerfile
+      target: dev
     container_name: morgan-be
     ports:
       - "8080:8080"
+    volumes:
+      - ../framework:/app/framework
+      - ../libraries:/app/libraries
+      - .:/app/morgan
+      - ../go.work:/app/go.work
     environment:
       APP_NAME: morgan
       APP_ENV: local

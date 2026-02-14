@@ -53,6 +53,7 @@ INSERT INTO iam.permissions (id, institution_id, code, description, module, sub_
     ('550e8400-e29b-41d4-a716-446655440115'::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, 'shift_sessions.schedule.shift_sessions.view', 'View Shift Sessions', 'shift_sessions', 'schedule', 'shift_sessions', 'view', 'both', true),
     ('550e8400-e29b-41d4-a716-446655440116'::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, 'shift_sessions.schedule.shift_sessions.create', 'Create Shift Session', 'shift_sessions', 'schedule', 'shift_sessions', 'create', 'both', true),
     ('550e8400-e29b-41d4-a716-446655440117'::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, 'shift_sessions.schedule.shift_sessions.edit', 'Edit Shift Session', 'shift_sessions', 'schedule', 'shift_sessions', 'edit', 'both', true),
+    ('550e8400-e29b-41d4-a716-446655440128'::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, 'shift_sessions.schedule.shift_sessions.delete', 'Delete Shift Session', 'shift_sessions', 'schedule', 'shift_sessions', 'delete', 'api', true),
 
     -- Severity Levels
     ('550e8400-e29b-41d4-a716-446655440118'::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, 'severity_levels.hr.severity_levels.view', 'View Severity Levels', 'severity_levels', 'hr', 'severity_levels', 'view', 'both', true),
@@ -121,7 +122,8 @@ AND code IN (
     'shift_groups.hr.shift_groups.edit',
     'shift_sessions.schedule.shift_sessions.view',
     'shift_sessions.schedule.shift_sessions.create',
-    'shift_sessions.schedule.shift_sessions.edit'
+    'shift_sessions.schedule.shift_sessions.edit',
+    'shift_sessions.schedule.shift_sessions.delete'
 )
 ON CONFLICT (role_id, permission_id) DO NOTHING;
 
@@ -194,6 +196,15 @@ INSERT INTO auth.users (id, institution_id, external_subject, identity_provider,
         'active'),
     ('550e8400-e29b-41d4-a716-446655440304'::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, 'user@university.edu', 'central',
         jsonb_build_object('full_name', 'Regular User', 'email', 'user@university.edu', 'department', 'General', 'is_verified', true),
+        'active'),
+    ('550e8400-e29b-41d4-a716-446655440305'::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, 'it_staff@university.edu', 'central',
+        jsonb_build_object('full_name', 'IT Staff', 'email', 'it_staff@university.edu', 'department', 'IT', 'is_verified', true),
+        'active'),
+    ('550e8400-e29b-41d4-a716-446655440306'::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, 'hk_staff@university.edu', 'central',
+        jsonb_build_object('full_name', 'House Keeping Staff', 'email', 'hk_staff@university.edu', 'department', 'Operations', 'is_verified', true),
+        'active'),
+    ('550e8400-e29b-41d4-a716-446655440307'::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, 'dosen_staff@university.edu', 'central',
+        jsonb_build_object('full_name', 'Dosen Staff', 'email', 'dosen_staff@university.edu', 'department', 'Academic', 'is_verified', true),
         'active')
 ON CONFLICT DO NOTHING;
 
@@ -208,7 +219,13 @@ INSERT INTO iam.user_roles (id, institution_id, user_id, role_id, group_id, is_a
     -- Operator gets Operator role
     (gen_random_uuid()::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, '550e8400-e29b-41d4-a716-446655440303'::UUID, '550e8400-e29b-41d4-a716-446655440204'::UUID, '550e8400-e29b-41d4-a716-446655440012'::UUID, true),
     -- Regular user gets User role
-    (gen_random_uuid()::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, '550e8400-e29b-41d4-a716-446655440304'::UUID, '550e8400-e29b-41d4-a716-446655440205'::UUID, '550e8400-e29b-41d4-a716-446655440010'::UUID, true)
+    (gen_random_uuid()::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, '550e8400-e29b-41d4-a716-446655440304'::UUID, '550e8400-e29b-41d4-a716-446655440205'::UUID, '550e8400-e29b-41d4-a716-446655440010'::UUID, true),
+    -- IT Staff gets User role in IT Group
+    (gen_random_uuid()::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, '550e8400-e29b-41d4-a716-446655440305'::UUID, '550e8400-e29b-41d4-a716-446655440205'::UUID, '550e8400-e29b-41d4-a716-446655440010'::UUID, true),
+    -- HK Staff gets User role in Operations Group
+    (gen_random_uuid()::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, '550e8400-e29b-41d4-a716-446655440306'::UUID, '550e8400-e29b-41d4-a716-446655440205'::UUID, '550e8400-e29b-41d4-a716-446655440012'::UUID, true),
+    -- Dosen Staff gets User role in Academic Group
+    (gen_random_uuid()::UUID, '550e8400-e29b-41d4-a716-446655440001'::UUID, '550e8400-e29b-41d4-a716-446655440307'::UUID, '550e8400-e29b-41d4-a716-446655440205'::UUID, '550e8400-e29b-41d4-a716-446655440011'::UUID, true)
 ON CONFLICT DO NOTHING;
 
 -- ============================================================================
@@ -310,6 +327,19 @@ SELECT
     'test-manager-token-1234567890123456789011' as access_token,
     (NOW() + INTERVAL '30 days') as expires_at
 FROM manager_roles
+ON CONFLICT DO NOTHING;
+
+-- Sessions for New Staff (IT, HK, Dosen)
+INSERT INTO auth.sessions (session_id, institution_id, user_id, external_subject, roles, access_token, expires_at) VALUES
+    ('test-it-session-01', '550e8400-e29b-41d4-a716-446655440001'::UUID, '550e8400-e29b-41d4-a716-446655440305', 'it_staff@university.edu', 
+        '[{"role_id":"550e8400-e29b-41d4-a716-446655440205","role_name":"User","groups":["IT Department"],"permissions":["users.iam.users.view","roles.iam.roles.view","domains.organization.domains.view"]}]'::JSONB, 
+        'test-it-token-123', NOW() + INTERVAL '30 days'),
+    ('test-hk-session-01', '550e8400-e29b-41d4-a716-446655440001'::UUID, '550e8400-e29b-41d4-a716-446655440306', 'hk_staff@university.edu', 
+        '[{"role_id":"550e8400-e29b-41d4-a716-446655440205","role_name":"User","groups":["Operations Department"],"permissions":["users.iam.users.view","roles.iam.roles.view","domains.organization.domains.view"]}]'::JSONB, 
+        'test-hk-token-123', NOW() + INTERVAL '30 days'),
+    ('test-dosen-session-01', '550e8400-e29b-41d4-a716-446655440001'::UUID, '550e8400-e29b-41d4-a716-446655440307', 'dosen_staff@university.edu', 
+        '[{"role_id":"550e8400-e29b-41d4-a716-446655440205","role_name":"User","groups":["Academic Department"],"permissions":["users.iam.users.view","roles.iam.roles.view","domains.organization.domains.view"]}]'::JSONB, 
+        'test-dosen-token-123', NOW() + INTERVAL '30 days')
 ON CONFLICT DO NOTHING;
 
 -- ============================================================================

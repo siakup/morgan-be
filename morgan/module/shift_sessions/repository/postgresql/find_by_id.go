@@ -21,7 +21,7 @@ var queryFindById = `
     created_by,
     updated_by,
     deleted_by
-	FROM schedule.shift_sessions
+	FROM hr.shift_sessions
 	WHERE id = @id AND deleted_at IS NULL
 	LIMIT 1
 `

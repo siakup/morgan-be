@@ -214,3 +214,50 @@ make docker-build
 # Run the container
 docker run -p 8080:8080 -e APP_ENV=dev users:latest
 ```
+
+### 3. Docker Compose
+
+The project includes both production and development configurations.
+
+#### **Production (default)**
+Full containerized stack with optimized binary.
+
+```bash
+# Start all services (PostgreSQL, Redis, Consul, Morgan)
+docker-compose up
+
+# Run in background
+docker-compose up -d
+
+# View logs
+docker-compose logs -f morgan-be
+```
+
+#### **Development (with Live Reload)**
+Uses [air](https://github.com/cosmtrek/air) for automatic code recompilation on file changes.
+
+```bash
+# Start with live-reload enabled
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+# View logs
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml logs -f morgan-be
+
+# When you edit .go files in morgan/, framework/, or libraries/, 
+# air automatically detects changes and rebuilds the binary inside the container.
+```
+
+**Development Setup Notes:**
+- The dev target mounts volumes: `./framework`, `./libraries`, `./morgan` → `/app/`
+- Air watches `.go` files and auto-rebuilds (delay: 1s)
+- Configuration: see [`.air.toml`](.air.toml) for exclude patterns
+- Server restarts automatically; API available immediately at `http://localhost:8080`
+
+#### **Stopping Services**
+```bash
+# Stop and remove containers
+docker-compose down
+
+# Stop and remove containers + volumes (clears DB/cache)
+docker-compose down -v
+```

@@ -23,6 +23,10 @@ type (
 	}
 )
 
+func (r *UserRoles) MarshalBinary() ([]byte, error) {
+	return json.Marshal(r)
+}
+
 func (r *UserRoles) UnmarshalBinary(data []byte) error {
 	return json.Unmarshal(data, r)
 }
@@ -39,6 +43,10 @@ func (r *UserRoles) Scan(src interface{}) error {
 		b, _ := json.Marshal(v)
 		return json.Unmarshal(b, r)
 	}
+}
+
+func (r *Roles) MarshalBinary() ([]byte, error) {
+	return json.Marshal(r)
 }
 
 func (r *Roles) UnmarshalBinary(data []byte) error {

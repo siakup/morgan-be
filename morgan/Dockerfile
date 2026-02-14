@@ -29,18 +29,43 @@ RUN CGO_ENABLED=0 GOOS=linux go build \
               -X 'github.com/siakup/morgan-be/version.BuildTime=${BUILD_TIME}'" \
     -o /go-morgan main.go
 
-# Stage 2: Run
-FROM alpine:3.19
+# Stage 2: Development (with air for live reload)
+FROM golang:1.25-alpine AS dev
 
 WORKDIR /app
 
-# Install runtime dependencies if needed (e.g. ca-certificates, tzdata)
+# Install air for live reload (updated package path)
+RUN go install github.com/air-verse/air@latest
+
+# Copy shared dependencies
+COPY framework/ ./framework/
+COPY libraries/ ./libraries/
+
+# Copy service (code will be mounted via volume in docker-compose)
+COPY go.work ./
+COPY morgan/go.mod morgan/go.sum ./morgan/
+COPY morgan/ ./morgan/
+COPY morgan/.air.toml ./morgan/
+
+WORKDIR /app/morgan
+
+# Run air for auto-reload with explicit config location
+CMD ["air"]
+
+# Stage 3: Production
+FROM alpine:3.19 AS prod
+
+WORKDIR /app
+
+# Install runtime dependencies
 RUN apk --no-cache add ca-certificates tzdata
 
 COPY --from=builder /go-morgan ./server
-# Copy config if needed, usually passed via env or mounted volume, but copying defaults is safe
 COPY --from=builder /app/morgan/config/config.example.json ./config/config.json
 
 EXPOSE 8080
 
 CMD ["./server", "serve"]
+
+# Default to production
+FROM prod

@@ -8,7 +8,7 @@ import (
 )
 
 var queryUpdate = `
-	UPDATE schedule.shift_sessions
+	UPDATE hr.shift_sessions
 	SET
 		name = @name,
 		start = @start,

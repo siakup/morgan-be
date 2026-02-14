@@ -28,12 +28,12 @@ func NewRoleHandler(useCase domain.UseCase, auth *middleware.AuthorizationMiddle
 func (h *RoleHandler) RegisterRoutes(app *fiber.App) {
 	group := app.Group("/roles", middleware.TraceMiddleware)
 
-	group.Get("/permissions", h.auth.Authenticate("roles.manage.all.view"), h.GetPermissions)
-	group.Get("/", h.auth.Authenticate("roles.manage.all.view"), h.GetRoles)
-	group.Get("/:id", h.auth.Authenticate("roles.manage.all.view"), h.GetRoleByID)
-	group.Post("/", h.auth.Authenticate("roles.manage.all.edit"), h.CreateRole)
-	group.Put("/:id", h.auth.Authenticate("roles.manage.all.edit"), h.UpdateRole)
-	group.Delete("/:id", h.auth.Authenticate("roles.manage.all.edit"), h.DeleteRole)
+	group.Get("/permissions", h.auth.Authenticate("roles.iam.roles.view"), h.GetPermissions)
+	group.Get("/", h.auth.Authenticate("roles.iam.roles.view"), h.GetRoles)
+	group.Get("/:id", h.auth.Authenticate("roles.iam.roles.view"), h.GetRoleByID)
+	group.Post("/", h.auth.Authenticate("roles.iam.roles.create"), h.CreateRole)
+	group.Put("/:id", h.auth.Authenticate("roles.iam.roles.edit"), h.UpdateRole)
+	group.Delete("/:id", h.auth.Authenticate("roles.iam.roles.delete"), h.DeleteRole)
 }
 
 // handleError handles errors by mapping them to standardized responses.

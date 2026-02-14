@@ -7,7 +7,6 @@ import (
 	"github.com/siakup/morgan-be/libraries/types"
 )
 
-// Domain represents the domain Domain entity.
 type Domain struct {
 	Id        string     `object:"id"`
 	Name      string     `object:"name"`
@@ -20,14 +19,12 @@ type Domain struct {
 	DeletedBy *string    `object:"deleted_by"` // Nullable
 }
 
-// DomainFilter represents filter options for listing Domains.
 type DomainFilter struct {
 	types.Pagination
 	Status string
 	Search string // Search in name
 }
 
-// DomainRepository defines the persistence layer contract.
 type DomainRepository interface {
 	FindAll(ctx context.Context, filter DomainFilter) ([]*Domain, int64, error)
 	FindByID(ctx context.Context, id string) (*Domain, error)

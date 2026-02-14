@@ -9,7 +9,6 @@ import (
 
 var _ domain.ShiftSessionRepository = (*Repository)(nil)
 
-// ShiftSessionEntity maps to schedule.shift_sessions table.
 type ShiftSessionEntity struct {
 	Id        string     `db:"id" map:"Id"`
 	Name      string     `db:"name" map:"Name"`
